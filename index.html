@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waktu Indonesia - WIB, WITA, WIT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f9f5ff 0%, #f0e6ff 50%, #e6d7ff 100%);
+            color: #4a2c82;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(106, 33, 165, 0.15);
+            padding: 30px;
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e6d7ff;
+        }
+        
+        h1 {
+            color: #6a21a5;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #8a53c6;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .time-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .time-card {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(145deg, #8a53c6, #6a21a5);
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(106, 33, 165, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .time-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .time-card h2 {
+            margin-top: 0;
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .time {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .date {
+            font-size: 18px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .day {
+            font-size: 22px;
+            font-weight: 500;
+            padding: 8px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .regions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .region-card {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(145deg, #d9c6f0, #c0a5e6);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(106, 33, 165, 0.1);
+        }
+        
+        .region-card h3 {
+            color: #6a21a5;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8a53c6;
+            text-align: center;
+        }
+        
+        .region-list {
+            columns: 2;
+            column-gap: 15px;
+        }
+        
+        .region-list li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+            break-inside: avoid;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e6d7ff;
+            color: #8a53c6;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .time-cards, .regions {
+                flex-direction: column;
+            }
+            
+            .time-card, .region-card {
+                min-width: auto;
+            }
+            
+            .time {
+                font-size: 32px;
+            }
+            
+            .region-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Waktu Indonesia Bagian Barat, Tengah, dan Timur</h1>
+            <p class="subtitle">Informasi waktu real-time dan daerah pada setiap zona waktu</p>
+        </header>
+        
+        <div class="time-cards">
+            <div class="time-card">
+                <h2>WIB (UTC+7)</h2>
+                <div class="time" id="wib-time">00:00:00</div>
+                <div class="date" id="wib-date">1 Januari 2023</div>
+                <div class="day" id="wib-day">Minggu</div>
+            </div>
+            
+            <div class="time-card">
+                <h2>WITA (UTC+8)</h2>
+                <div class="time" id="wita-time">00:00:00</div>
+                <div class="date" id="wita-date">1 Januari 2023</div>
+                <div class="day" id="wita-day">Minggu</div>
+            </div>
+            
+            <div class="time-card">
+                <h2>WIT (UTC+9)</h2>
+                <div class="time" id="wit-time">00:00:00</div>
+                <div class="date" id="wit-date">1 Januari 2023</div>
+                <div class="day" id="wit-day">Minggu</div>
+            </div>
+        </div>
+        
+        <div class="regions">
+            <div class="region-card">
+                <h3>Daerah WIB (Waktu Indonesia Barat)</h3>
+                <ul class="region-list">
+                    <li>DKI Jakarta</li>
+                    <li>Jawa Barat</li>
+                    <li>Jawa Tengah</li>
+                    <li>DI Yogyakarta</li>
+                    <li>Jawa Timur</li>
+                    <li>Banten</li>
+                    <li>Sumatera Barat</li>
+                    <li>Sumatera Selatan</li>
+                    <li>Sumatera Utara</li>
+                    <li>Riau</li>
+                    <li>Kepulauan Riau</li>
+                    <li>Jambi</li>
+                    <li>Bengkulu</li>
+                    <li>Lampung</li>
+                    <li>Bangka Belitung</li>
+                    <li>Kalimantan Barat</li>
+                </ul>
+            </div>
+            
+            <div class="region-card">
+                <h3>Daerah WITA (Waktu Indonesia Tengah)</h3>
+                <ul class="region-list">
+                    <li>Bali</li>
+                    <li>Nusa Tenggara Barat</li>
+                    <li>Nusa Tenggara Timur</li>
+                    <li>Kalimantan Selatan</li>
+                    <li>Kalimantan Tengah</li>
+                    <li>Kalimantan Timur</li>
+                    <li>Kalimantan Utara</li>
+                    <li>Sulawesi Barat</li>
+                    <li>Sulawesi Selatan</li>
+                    <li>Sulawesi Tengah</li>
+                    <li>Sulawesi Tenggara</li>
+                    <li>Sulawesi Utara</li>
+                    <li>Gorontalo</li>
+                </ul>
+            </div>
+            
+            <div class="region-card">
+                <h3>Daerah WIT (Waktu Indonesia Timur)</h3>
+                <ul class="region-list">
+                    <li>Maluku</li>
+                    <li>Maluku Utara</li>
+                    <li>Papua</li>
+                    <li>Papua Barat</li>
+                    <li>Papua Selatan</li>
+                    <li>Papua Tengah</li>
+                    <li>Papua Pegunungan</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 - Informasi Waktu Indonesia | WIB (UTC+7), WITA (UTC+8), WIT (UTC+9)</p>
+        </footer>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            
+            // WIB: UTC+7
+            const wibTime = new Date(utc + (3600000 * 7));
+            document.getElementById('wib-time').textContent = formatTime(wibTime);
+            document.getElementById('wib-date').textContent = formatDate(wibTime);
+            document.getElementById('wib-day').textContent = getDayName(wibTime);
+            
+            // WITA: UTC+8
+            const witaTime = new Date(utc + (3600000 * 8));
+            document.getElementById('wita-time').textContent = formatTime(witaTime);
+            document.getElementById('wita-date').textContent = formatDate(witaTime);
+            document.getElementById('wita-day').textContent = getDayName(witaTime);
+            
+            // WIT: UTC+9
+            const witTime = new Date(utc + (3600000 * 9));
+            document.getElementById('wit-time').textContent = formatTime(witTime);
+            document.getElementById('wit-date').textContent = formatDate(witTime);
+            document.getElementById('wit-day').textContent = getDayName(witTime);
+        }
+        
+        function formatTime(date) {
+            return date.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+        }
+        
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.toLocaleString('id-ID', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+        
+        function getDayName(date) {
+            return date.toLocaleString('id-ID', { weekday: 'long' });
+        }
+        
+        // Update time every second
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call
+    </script>
+</body>
+</html>
